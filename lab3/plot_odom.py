@@ -2,7 +2,7 @@
 
 import rclpy
 from rclpy.node import Node
-from nav_msgs.msg import # TODO: what type of message should be subscribed to?
+from nav_msgs.msg import Odometry # TODO: what type of message should be subscribed to?
 import matplotlib.pyplot as plt
 
 
@@ -10,10 +10,10 @@ class OdomPlotter(Node):
     def __init__(self):
         super().__init__('odom_plotter')
         self.subscription = self.create_subscription(
-            <message>, # TODO: what type of message should be subscribed to?
-            '</topic>', # TODO: what topic should be subscribed to?
-            <function>, # TODO: which function should be used as the 'callback' function?
-            <queue_size>) # TODO: what should the queue size be?
+            Odometry, # TODO: what type of message should be subscribed to?
+            '/odom', # TODO: what topic should be subscribed to?
+            self.odom_callback, # TODO: which function should be used as the 'callback' function?
+            10) # TODO: what should the queue size be?
         self.subscription  # prevent unused variable warning
         # Lists to store the x and y data
         self.x_data = []
@@ -21,9 +21,9 @@ class OdomPlotter(Node):
 
     def odom_callback(self, msg):
         # Extract the x and y positions
-        position = # TODO: retrieve the pose data from the message
-        x = # TODO: retrieve the x data from the pose
-        y = # TODO: retireve the y data from the pose
+        position = msg.pose.pose.position
+        x = position.x
+        y = position.y
         # Log the position
         self.get_logger().info(f"Position -> x: {x}, y: {y}")
         # Append the x and y positions to the lists
