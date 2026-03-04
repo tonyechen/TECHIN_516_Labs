@@ -6,7 +6,7 @@
     "--network=host",
     "--ipc=host",
     "-e",
-    "DISPLAY=${localEnv:DISPLAY}",
+    "DISPLAY=${localEnv:DISPLAY}"
   ],
   "workspaceMount": "source=${localWorkspaceFolder},target=/home/ubuntu/turtlebot4_ws,type=bind",
   "workspaceFolder": "/home/ubuntu/turtlebot4_ws",
