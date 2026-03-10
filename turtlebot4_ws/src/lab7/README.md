@@ -1,0 +1,1 @@
+ros2 launch yolo_bringup yolo.launch.py use_3d:=True device:=cpu input_image_topic:=/oakd/rgb/preview/image_raw input_depth_topic:=/oakd/rgb/preview/depth input_depth_info_topic:=/oakd/rgb/preview/camera_info model:=yolov8m-seg.pt depth_image_units_divisor:=1
